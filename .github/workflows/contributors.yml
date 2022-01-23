@@ -1,0 +1,16 @@
+on: [push]
+
+jobs:
+  contributors:
+    runs-on: ubuntu-latest
+    name: Contributor compliance checks
+    steps:
+      - uses: actions/checkout@v2
+      - id: inspection
+        uses: github.com/greenpau/contributor-compliance-action@v1.0.1
+        with:
+          cla_consent_required: true
+          signed_off_required: true
+          issue_required: true
+          max_commits: 1
+          cla_consent_path: assets/cla/consent.yaml
